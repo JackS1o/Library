@@ -14,6 +14,11 @@ class BooksController {
     const book = await this._service.create(books);
     res.status(201).json(book);
   }
+
+  public async read(req:Request, res:Response):Promise<void> {
+    const books = await this._service.read();
+    res.status(200).json(books);
+  }
 }
 
 export default BooksController;

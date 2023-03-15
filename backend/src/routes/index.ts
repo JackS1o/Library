@@ -9,6 +9,7 @@ const booksModel = new Book();
 const booksService = new BooksService(booksModel);
 const booksController = new BooksController(booksService);
 
-router.get("/", (req, res) => booksController.create(req, res));
+router.post("/", (req, res) => booksController.create(req, res));
+router.get("/", (req, res) => booksController.read(req, res));
 
 export default router;

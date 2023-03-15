@@ -17,7 +17,12 @@ class BooksService implements IService<IBook> {
       }
       return await this.book.create(book);
     }));
-    return parsed as unknown as IBook;
+    return parsed as unknown as Promise<IBook>;
+  }
+
+  public async read():Promise<IBook[]> {
+    const books = await this.book.read();
+    return books;
   }
 }
 
