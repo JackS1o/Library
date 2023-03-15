@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: library_frontend
+    build: ./
+    tty: true
+    stdin_open: true
+    command: bash -c "npm install && npm start"
+    restart: always
+    volumes:
+      - ./public:/srv/frontend/public
+      - ./src:/srv/frontend/src
+      - ./package.json:/srv/frontend/package.json
+      - ./package-lock.json:/srv/frontend/package-lock.json
+    depends_on:
+      - backend
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000
+  backend:
+    image: node:16.14
+    container_name: library_backend
+    build: ./
+    tty: true
+    stdin_open: true
+    command: bash -c "npm install && npm start"
+    restart: always
+    volumes:
+      - ./:/srv/backend
+    depends_on:
+      - mongodb
+    ports:
+      - 3001:3001
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/Library
+
+  mongodb:
+    image: mongo:5.0.3
+    container_name: library_db
+    volumes:
+      - ./:/app
+    restart: always
+    ports:
+      - 27017:27017
+
+networks:
+  default:
+    name: library_network
