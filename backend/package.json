@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "products:import": "node src/config/seeder",
+    "products:destroy": "node src/config/seeder -d"
   },
   "keywords": [],
   "author": "",
