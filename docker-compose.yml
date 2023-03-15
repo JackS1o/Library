@@ -20,25 +20,24 @@ services:
     environment:
       - REACT_APP_API_URL=http://localhost:3000
   backend:
-    image: node:16.14
-    container_name: library_backend
-    build: ./
+    container_name: backend
+    build: ./backend
     tty: true
     stdin_open: true
     command: bash -c "npm install && npm start"
     restart: always
     volumes:
-      - ./:/srv/backend
+      - ./backend:/srv/backend
     depends_on:
       - mongodb
     ports:
       - 3001:3001
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/Library
+      - MONGODB_URI=mongodb://mongodb:27017/Library
 
   mongodb:
     image: mongo:5.0.3
-    container_name: library_db
+    container_name: library_mongodb
     volumes:
       - ./:/app
     restart: always
