@@ -14,16 +14,35 @@ interface IBook {
 }
 
 function TablePage() {
+  const [data, setdata] = useState<IBook[]>([]);
   const [books, setBooks] = useState<IBook[]>([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     booksRequest().then((res) => {
       if (res) {
-        setBooks(res);
+        setdata(res);
       }
     });
+    setBooks(data);
   }, []);
-  console.log(books);
+
+  const inputSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSearch(value);
+  }
+
+  const searchBook = () => {
+    const filteredBooks = data.filter((book) => {
+      return (
+        book.title.toLowerCase().includes(search.toLowerCase()) ||
+        book.author.toLowerCase().includes(search.toLowerCase()) ||
+        book.language.toLowerCase().includes(search.toLowerCase())
+      );
+    });
+    setBooks(filteredBooks);
+  };
+
   return (
     <div>
       <header>
@@ -33,9 +52,14 @@ function TablePage() {
           <input
             type="text"
             placeholder="Busque livros pelo título, autor ou idioma"
+            value={search}
+            onChange={(event) => inputSearch(event)}
           />
         </label>
-        <button>Buscar</button>
+        <button
+          type="button"
+          onClick={searchBook}
+        >Buscar</button>
       </header>
       <main>
         <table>
