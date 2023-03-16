@@ -13,6 +13,7 @@ services:
       - ./src:/srv/frontend/src
       - ./package.json:/srv/frontend/package.json
       - ./package-lock.json:/srv/frontend/package-lock.json
+      - ./tsconfig.json:/srv/frontend/tsconfig.json
     depends_on:
       - backend
     ports:
