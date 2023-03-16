@@ -1,9 +1,10 @@
 import React from "react";
+import TablePage from "./pages/Table";
 
 function App() {
   return (
     <div className="App">
-      <h1>Olá</h1>
+      <TablePage />
     </div>
   );
 }
