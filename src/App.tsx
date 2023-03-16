@@ -1,10 +1,10 @@
 import React from "react";
-import TablePage from "./pages/Table";
+import Main from "./pages/Main";
 
 function App() {
   return (
     <div className="App">
-      <TablePage />
+      <Main />
     </div>
   );
 }

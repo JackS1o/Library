@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Button, createTheme, TextField, Typography } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import TableBooks from "../components/TableBooks";
 
 interface IBook {
   author: string;
@@ -26,7 +27,7 @@ const buttonTheme = createTheme({
   },
 });
 
-function TablePage() {
+function Main() {
   const [data, setdata] = useState<IBook[]>([]);
   const [books, setBooks] = useState<IBook[]>([]);
   const [search, setSearch] = useState("");
@@ -61,20 +62,18 @@ function TablePage() {
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{ backgroundColor: "#d9d9d9" }}>
-          <Toolbar sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                "& .MuiTextField-root": { m: 5, width: "75vw" },
-              }}>
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              "& .MuiTextField-root": { m: 5, width: "75vw" },
+            }}
+          >
             <Typography variant="h4" sx={{ color: "#60378a" }}>
               Beon
             </Typography>
-            <Box
-              component="form"
-              noValidate
-              autoComplete="off"
-            >
+            <Box component="form" noValidate autoComplete="off">
               <ThemeProvider theme={buttonTheme}>
                 <TextField
                   id="standard-textarea"
@@ -102,31 +101,10 @@ function TablePage() {
         </AppBar>
       </Box>
       <main>
-        <table>
-          <thead>
-            <tr>
-              <th>Livro</th>
-              <th>Autor</th>
-              <th>Idioma</th>
-              <th>Ano</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {books?.map((book) => (
-              <tr key={book._id}>
-                <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td>{book.language}</td>
-                <td>{book.year}</td>
-                <td>Ações</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <TableBooks books={books} />
       </main>
     </div>
   );
 }
 
-export default TablePage;
+export default Main;
