@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import booksRequest from "../api/booksRequest";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
-import { Button, createTheme, TextField } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Button, createTheme, TextField, Typography } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 
 interface IBook {
@@ -23,14 +17,6 @@ interface IBook {
   year: number;
   _id: string;
 }
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#fff",
-    },
-  },
-});
 
 const buttonTheme = createTheme({
   palette: {
@@ -75,22 +61,23 @@ function TablePage() {
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{ backgroundColor: "#d9d9d9" }}>
-          <Toolbar>
+          <Toolbar sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                "& .MuiTextField-root": { m: 5, width: "75vw" },
+              }}>
             <Typography variant="h4" sx={{ color: "#60378a" }}>
               Beon
             </Typography>
             <Box
               component="form"
-              sx={{
-                "& .MuiTextField-root": { m: 5, width: "80ch" },
-              }}
               noValidate
               autoComplete="off"
             >
               <ThemeProvider theme={buttonTheme}>
                 <TextField
                   id="standard-textarea"
-                  label="Busque livros pelo título, autor ou idioma"
                   placeholder="Busque livros pelo título, autor ou idioma"
                   variant="standard"
                   color="primary"
