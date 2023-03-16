@@ -13,19 +13,26 @@ function TableBooks({ books }: { books: any }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">Livro</TableCell>
-            <TableCell align="center">Autor</TableCell>
-            <TableCell align="center">Idioma</TableCell>
-            <TableCell align="center">Ano</TableCell>
-            <TableCell align="center">Ações</TableCell>
+            <TableCell align="center">
+              <strong>Livro</strong>
+            </TableCell>
+            <TableCell align="center">
+              <strong>Autor</strong>
+            </TableCell>
+            <TableCell align="center">
+              <strong>Idioma</strong>
+            </TableCell>
+            <TableCell align="center">
+              <strong>Ano</strong>
+            </TableCell>
+            <TableCell align="center">
+              <strong>Ações</strong>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {books?.map((book: any) => (
-            <TableRow
-              key={book.id}
-              
-            >
+            <TableRow key={book.id}>
               <TableCell align="center">{book.title}</TableCell>
               <TableCell align="center">{book.author}</TableCell>
               <TableCell align="center">{book.language}</TableCell>
