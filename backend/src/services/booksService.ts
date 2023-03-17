@@ -22,7 +22,12 @@ class BooksService implements IService<IBook> {
 
   public async read():Promise<IBook[]> {
     const books = await this.book.read();
-    return books;
+    return books as unknown as Promise<IBook[]>;
+  }
+
+  public async readOne(_id:string):Promise<IBook> {
+    const book = await this.book.readOne(_id);
+    return book as unknown as Promise<IBook>;
   }
 }
 

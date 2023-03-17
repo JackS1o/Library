@@ -49,7 +49,7 @@ function TableBooks({ books }: { books: any }) {
                 <TableCell align="center">{book.language}</TableCell>
                 <TableCell align="center">{book.year}</TableCell>
                 <TableCell align="center">
-                  <Link to={`/book/${book.id}`}>Detalhes</Link>
+                  <Link to={`/book/${book._id}`}>Detalhes</Link>
                 </TableCell>
               </TableRow>
             ))}

@@ -11,5 +11,6 @@ const booksController = new BooksController(booksService);
 
 router.post("/", (req, res) => booksController.create(req, res));
 router.get("/", (req, res) => booksController.read(req, res));
+router.get("/:id", (req, res) => booksController.readOne(req, res));
 
 export default router;

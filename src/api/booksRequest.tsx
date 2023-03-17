@@ -24,4 +24,18 @@ const booksRequest = async () => {
   return response;
 };
 
-export default booksRequest;
+const booksRequestById = async (id: string | undefined) => {
+  const response = await axios
+    .get(`http://localhost:3001/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+  console.log(response);
+  
+  return response;
+};
+
+export { booksRequest, booksRequestById };

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "tsnd src/index.ts",
-    "products:import": "node dist/src/config/seeder",
+    "products:import": "node src/config/seeder",
     "products:destroy": "node src/config/seeder -d"
   },
   "keywords": [],
