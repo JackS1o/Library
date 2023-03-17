@@ -69,7 +69,8 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
     Tela Principal / Detalhes do livro
   </p>
   <p align="center">
-    <img src="./preview/home.png" alt="login" width="800"/>
-    <img src="./preview/book-detail.png" alt="login" width="800"/>
+    <img src=".//src/preview/home.png" alt="home" width="800"/>
+    <img src="./src/preview/book-detail.png" alt="book detail" width="800"/>
   </p>
+  <hr />
 </details>
