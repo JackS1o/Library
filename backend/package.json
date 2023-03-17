@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "tsnd src/index.ts",
-    "products:import": "node src/config/seeder",
-    "products:destroy": "node src/config/seeder -d"
+    "test": "npx mocha src/tests/unit/controllers"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +13,9 @@
   "dependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "4.17.13",
+    "@types/jest": "^29.5.0",
     "@types/joi": "17.2.3",
+    "@types/mocha": "^10.0.1",
     "cors": "^2.8.5",
     "express": "4.17.1",
     "express-async-errors": "^3.1.1",

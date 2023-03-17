@@ -18,7 +18,7 @@ class BooksService implements IService<IBook> {
     const parsed = Promise.all(obj.map(async(book:any) => {
       const parsed = BookZodSchema.safeParse(book);
       if (!parsed.success) {
-        throw new Error(parsed.error.message);
+        throw new Error('Invalid book');
       }
       return await this.book.create(book);
     }));

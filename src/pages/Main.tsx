@@ -53,15 +53,16 @@ function Main() {
     });
     if (search.minYear.length && !search.maxYear.length) {
       return alert("Preencha o ano máximo");
+    } else {
+      const filteredBooksByYear = filteredBooks.filter((book) => {
+        return (
+          book.year >= parseInt(search.minYear) &&
+          book.year <= parseInt(search.maxYear)
+        );
+      });
+      setBooks(filteredBooksByYear);
     }
-    const filteredBooksByYear = filteredBooks.filter((book) => {
-      return (
-        book.year >= parseInt(search.minYear) &&
-        book.year <= parseInt(search.maxYear)
-      );
-    });
     setBooks(filteredBooks);
-    setBooks(filteredBooksByYear);
     setSearch({
       search: "",
       minYear: "",

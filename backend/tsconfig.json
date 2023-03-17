@@ -1,17 +1,27 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": ".",
-    "target": "es2019",
-    "module": "commonjs",
-    "typeRoots": [
-      "src/@types",
-      "./node_modules/@types"
-    ],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "compilerOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target": { "type": "string" },
+        "module": { "type": "string" },
+        "outDir": { "type": "string" },
+        "strict": { "type": "boolean" }
+      },
+      "esModuleInterop": true
+    },
+    "include": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "exclude": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
   },
-  "exclude": ["node_modules"]
+  "required": ["compilerOptions"]
 }
