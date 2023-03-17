@@ -122,7 +122,7 @@ function Main() {
               <TextField
                 id="standard-textarea"
                 type={"number"}
-                label="Ano da publicação"
+                label="Filtrar ano da publicação"
                 placeholder="Busque livros pelo ano"
                 variant="standard"
                 color="primary"
@@ -147,6 +147,9 @@ function Main() {
                 }
                 sx={{ marginLeft: "5em" }}
               />
+              <Typography variant="h6" sx={{ marginLeft: "5em", color: "#000" }}>
+                {books.length} resultados encontrados
+              </Typography>
             </ThemeProvider>
           </Toolbar>
         </AppBar>
