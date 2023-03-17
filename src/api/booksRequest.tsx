@@ -1,4 +1,5 @@
 import axios from "axios";
+import books from "../data/books.json";
 
 interface IBook {
   author: string;
@@ -33,9 +34,22 @@ const booksRequestById = async (id: string | undefined) => {
     .catch((err) => {
       return err;
     });
-  console.log(response);
-  
+
   return response;
 };
+
+const seedBooks = async () => {
+  const response = await axios
+    .post("http://localhost:3001/", books)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return response;
+};
+
+seedBooks();
 
 export { booksRequest, booksRequestById };

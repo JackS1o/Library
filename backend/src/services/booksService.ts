@@ -1,3 +1,4 @@
+import { DuplicateEntry } from '../errors/catalog';
 import { BookZodSchema, IBook } from '../interfaces/IBook';
 import { IModel } from '../interfaces/IModel';
 import { IService } from '../interfaces/IService';
@@ -10,6 +11,10 @@ class BooksService implements IService<IBook> {
   }
 
   public async create(obj:any):Promise<IBook> {
+    const books = await this.read();
+    if (books.length > 0) {
+      throw new DuplicateEntry('Book already exists');
+    }
     const parsed = Promise.all(obj.map(async(book:any) => {
       const parsed = BookZodSchema.safeParse(book);
       if (!parsed.success) {

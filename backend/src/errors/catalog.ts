@@ -1,22 +1,26 @@
-export enum ErrorTypes {
-  EntityNotFound = 'EntityNotFound',
-  InvalidMongoId = 'InvalidMongoId',
+export class ApiError extends Error {
+  public readonly statusCode: number;
+
+  constructor(message: string, statusCode: number) {
+    super(message);
+    this.statusCode = statusCode;
+  }
 }
 
-type ErrorResponseObject = { 
-  error: string;
-  httpStatus: number
-};
+export class InvalidMongoId extends ApiError {
+  constructor(message: string) {
+    super(message, 404);
+  }
+}
 
-export type ErrorCatalog = Record<ErrorTypes, ErrorResponseObject>;
+export class EntityNotFound extends ApiError {
+  constructor(message: string) {
+    super(message, 400);
+  }
+}
 
-export const errorCatalog: ErrorCatalog = {
-  EntityNotFound: {
-    error: 'Object not found',
-    httpStatus: 404,
-  },
-  InvalidMongoId: {
-    error: 'Id must have 24 hexadecimal characters',
-    httpStatus: 400,
-  },
-};
+export class DuplicateEntry extends ApiError {
+  constructor(message: string) {
+    super(message, 409);
+  }
+}
