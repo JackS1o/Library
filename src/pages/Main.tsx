@@ -19,7 +19,11 @@ const buttonTheme = createTheme({
 function Main() {
   const [data, setdata] = useState<IBook[]>([]);
   const [books, setBooks] = useState<IBook[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState({
+    search: "",
+    minYear: "",
+    maxYear: "",
+  });
 
   useEffect(() => {
     booksRequest().then((res) => {
@@ -31,24 +35,42 @@ function Main() {
   }, []);
 
   const inputSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setSearch(value);
+    const { name, value } = event.target;
+    setSearch({
+      search: name === "search" ? value : search.search,
+      minYear: name === "minYear" ? value : search.minYear,
+      maxYear: name === "maxYear" ? value : search.maxYear,
+    });
   };
 
   const searchBook = () => {
     const filteredBooks = data.filter((book) => {
       return (
-        book.title.toLowerCase().includes(search.toLowerCase()) ||
-        book.author.toLowerCase().includes(search.toLowerCase()) ||
-        book.language.toLowerCase().includes(search.toLowerCase())
+        book.title.toLowerCase().includes(search.search.toLowerCase()) ||
+        book.author.toLowerCase().includes(search.search.toLowerCase()) ||
+        book.language.toLowerCase().includes(search.search.toLowerCase())
+      );
+    });
+    if (search.minYear.length && !search.maxYear.length) {
+      return alert("Preencha o ano máximo");
+    }
+    const filteredBooksByYear = filteredBooks.filter((book) => {
+      return (
+        book.year >= parseInt(search.minYear) &&
+        book.year <= parseInt(search.maxYear)
       );
     });
     setBooks(filteredBooks);
-    setSearch("");
+    setBooks(filteredBooksByYear);
+    setSearch({
+      search: "",
+      minYear: "",
+      maxYear: "",
+    });
   };
 
   return (
-    <div>
+    <Box>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{ backgroundColor: "#d9d9d9" }}>
           <Toolbar
@@ -69,7 +91,8 @@ function Main() {
                   placeholder="Busque livros pelo título, autor ou idioma"
                   variant="standard"
                   color="primary"
-                  value={search}
+                  name="search"
+                  value={search.search}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     inputSearch(event)
                   }
@@ -87,12 +110,51 @@ function Main() {
               </Button>
             </ThemeProvider>
           </Toolbar>
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: "1.5em",
+            }}
+          >
+            <ThemeProvider theme={buttonTheme}>
+              <TextField
+                id="standard-textarea"
+                type={"number"}
+                label="Ano da publicação"
+                placeholder="Busque livros pelo ano"
+                variant="standard"
+                color="primary"
+                name="minYear"
+                value={search.minYear}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  inputSearch(event)
+                }
+                sx={{ marginRight: "5em" }}
+              />
+              <TextField
+                id="standard-textarea"
+                type={"number"}
+                label="Até"
+                placeholder="Busque livros pelo ano"
+                variant="standard"
+                color="primary"
+                name="maxYear"
+                value={search.maxYear}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  inputSearch(event)
+                }
+                sx={{ marginLeft: "5em" }}
+              />
+            </ThemeProvider>
+          </Toolbar>
         </AppBar>
       </Box>
-      <main>
+      <Box>
         <TableBooks books={books} />
-      </main>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

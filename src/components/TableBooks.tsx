@@ -6,15 +6,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link, Pagination, PaginationItem, Stack } from "@mui/material";
+import { Pagination, PaginationItem, Stack } from "@mui/material";
 import usePagination from "../hooks/usePagination";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Link } from "react-router-dom";
 
 function TableBooks({ books }: { books: any }) {
   const { currentData, currentPage, goToPage, totalPages } = usePagination(
     books,
-    7
+    10
   );
 
   return (
@@ -48,7 +49,7 @@ function TableBooks({ books }: { books: any }) {
                 <TableCell align="center">{book.language}</TableCell>
                 <TableCell align="center">{book.year}</TableCell>
                 <TableCell align="center">
-                  <Link>Detalhes</Link>
+                  <Link to={`/book/${book.id}`}>Detalhes</Link>
                 </TableCell>
               </TableRow>
             ))}
