@@ -6,18 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Button, createTheme, TextField, Typography } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import TableBooks from "../components/TableBooks";
-
-interface IBook {
-  author: string;
-  country: string;
-  imageLink: string;
-  language: string;
-  link: string;
-  pages: number;
-  title: string;
-  year: number;
-  _id: string;
-}
+import IBook from "../interface/books";
 
 const buttonTheme = createTheme({
   palette: {
@@ -36,9 +25,9 @@ function Main() {
     booksRequest().then((res) => {
       if (res) {
         setdata(res);
+        setBooks(res);
       }
     });
-    setBooks(data);
   }, []);
 
   const inputSearch = (event: React.ChangeEvent<HTMLInputElement>) => {

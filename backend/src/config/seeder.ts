@@ -1,15 +1,18 @@
-require('dotenv/config');
-const books = require('../data/books.js');
-const Book = require('../models/booksModel.js');
-const connectDB = require('../config/connection.js');
+import dotenv from 'dotenv';
+import books from '../data/books';
+import connectDB from './connection';
+import Book from '../models/booksModel';
 
+dotenv.config();
 connectDB();
+
+const Books = new Book();
 
 const importBooks = async () => {
 	try {
-		await Book.deleteMany();
+		await Books.model.deleteMany();
 
-		await Book.insertMany(books);
+		await Books.model.insertMany(books);
 
 		console.log('Data Imported');
 		process.exit();
@@ -21,7 +24,7 @@ const importBooks = async () => {
 
 const deleteProducts = async () => {
 	try {
-		await Book.deleteMany();
+		await Books.model.deleteMany({});
 
 		console.log('Data destroyed');
 		process.exit();
