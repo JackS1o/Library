@@ -69,8 +69,8 @@ const { expect } = chai;
 //   })
 // });
 
-describe("Teste booksController", () => {
-  describe("Rota GET", () => {
+describe("Books Controller", () => {
+  describe("Create Book", () => {
     const booksModel = new BooksModel();
     const booksService = new BooksService(booksModel);
     const booksController = new BooksController(booksService);
@@ -104,7 +104,7 @@ describe("Teste booksController", () => {
     });
   });
 
-  describe("Rota POST", () => {
+  describe("Read Book", () => {
     const booksModel = new BooksModel();
     const booksService = new BooksService(booksModel);
     const booksController = new BooksController(booksService);
@@ -140,7 +140,7 @@ describe("Teste booksController", () => {
     });
   });
 
-  describe("Rota GET/:id", () => {
+  describe("ReadOne Book", () => {
     const booksModel = new BooksModel();
     const booksService = new BooksService(booksModel);
     const booksController = new BooksController(booksService);
