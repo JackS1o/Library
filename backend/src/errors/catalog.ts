@@ -21,6 +21,6 @@ export class EntityNotFound extends ApiError {
 
 export class DuplicateEntry extends ApiError {
   constructor(message: string) {
-    super(message, 409);
+    super(message, 200);
   }
 }
