@@ -1,4 +1,4 @@
-import { DuplicateEntry } from '../errors/catalog';
+import { DuplicateEntry, EntityNotFound } from '../errors/catalog';
 import { BookZodSchema, IBook } from '../interfaces/IBook';
 import { IModel } from '../interfaces/IModel';
 import { IService } from '../interfaces/IService';
@@ -32,6 +32,9 @@ class BooksService implements IService<IBook> {
 
   public async readOne(_id:string):Promise<IBook> {
     const book = await this.book.readOne(_id);
+    if (!book) {
+      throw new EntityNotFound('Book not found');
+    }
     return book as unknown as Promise<IBook>;
   }
 }
