@@ -12,10 +12,10 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
   1. Clone o repositório 
     `git@github.com:JackS1o/Library.git`
   
-  2. Na raíz do projeto, execute o comando `docker-compose up -d` para subir os containeres da aplicação e do banco de dados. Os Serviços estarão disponíveis nos seguintes endereços:
+  2. Na raíz do projeto, execute o comando `docker-compose up -d` para subir os containers da aplicação e do banco de dados. Os Serviços estarão disponíveis nos seguintes endereços:
     - Frontend: http://localhost:3000
     - Backend: http://localhost:3001
-    - Banco de dados: http://localhost:27017 
+    - Banco de dados na porta: 27017 
 
 </details>
 
@@ -66,6 +66,7 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
   </summary><br>
 
   - [Node.js](https://nodejs.org/en/)
+  - [Typescript](https://www.typescriptlang.org/)
   - [Express](https://expressjs.com/pt-br/)
   - [MongoDB](https://www.mongodb.com/)
   - [Docker](https://www.docker.com/)
@@ -88,7 +89,7 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
     Tela Principal / Detalhes do livro
   </p>
   <p align="center">
-    <img src=".//src/preview/home.png" alt="home" width="600"/>
+    <img src=".//src/preview/home.png" alt="home" width="800"/>
     <img src="./src/preview/book-detail.png" alt="book detail" width="600"/>
   </p>
   <hr />
