@@ -24,9 +24,9 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
     <strong>Como executar os testes</strong>
   </summary><br>
 
-  1. No diretório `backend`, execute o comando `npm test` para executar os testes unitários.
+  1. No diretório `backend`, execute o comando `npm test:dev` para executar os testes.
 
-  2. Os testes unitários foram desenvolvidos utilizando `Jest`, `mocha`, `sinon` e `chai`.
+  2. Os testes foram desenvolvidos utilizando `Jest`, `mocha`, `sinon` e `chai`.
 
   3. Os testes foram desenvolvidos para as seguintes rotas:
     - GET
@@ -62,6 +62,25 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
 
 <details>
   <summary>
+    <strong>Tecnologias</strong>
+  </summary><br>
+
+  - [Node.js](https://nodejs.org/en/)
+  - [Express](https://expressjs.com/pt-br/)
+  - [MongoDB](https://www.mongodb.com/)
+  - [Docker](https://www.docker.com/)
+  - [React](https://pt-br.reactjs.org/)
+  - [Material UI](https://material-ui.com/pt/)
+  - [Jest](https://jestjs.io/)
+  - [Mocha](https://mochajs.org/)
+  - [Sinon](https://sinonjs.org/)
+  - [Chai](https://www.chaijs.com/)
+  - [Axios]()
+  - [React Router](https://reactrouter.com/)
+</details>
+
+<details>
+  <summary>
     <strong>Preview</strong>
   </summary><br>
 
@@ -69,8 +88,8 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
     Tela Principal / Detalhes do livro
   </p>
   <p align="center">
-    <img src=".//src/preview/home.png" alt="home" width="800"/>
-    <img src="./src/preview/book-detail.png" alt="book detail" width="800"/>
+    <img src=".//src/preview/home.png" alt="home" width="600"/>
+    <img src="./src/preview/book-detail.png" alt="book detail" width="600"/>
   </p>
   <hr />
 </details>
