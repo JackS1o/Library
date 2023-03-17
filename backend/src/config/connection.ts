@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import 'dotenv/config';
 
 const MONGO_DB_URL = 'mongodb://mongodb:27017/Library';

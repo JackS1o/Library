@@ -1,7 +1,7 @@
 import 'express-async-errors';
 import routes from './routes';
-import * as cors from 'cors';
-import * as express from 'express';
+import cors from 'cors';
+import express from 'express';
 import errorHandler from './middleware/error';
 
 const app = express();
