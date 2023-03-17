@@ -24,16 +24,16 @@ Esta é uma aplicação Fullstack que permite o gerenciamento de uma biblioteca.
     <strong>Como executar os testes</strong>
   </summary><br>
 
-  1. No diretório `backend`, execute o comando `npm test:dev` para executar os testes.
+  1. No diretório `backend`, execute o comando `npm run test:dev` para executar os testes.
 
   2. Os testes foram desenvolvidos utilizando `Jest`, `mocha`, `sinon` e `chai`.
 
   3. Os testes foram desenvolvidos para as seguintes rotas:
-    - GET
+    - GET /
     - GET /:id
     - POST /
 
-  Tendo em vista que a aplicação foi desenvolvida utilizando o padrão MSC, os testes foram desenvolvidos para cada camada da aplicação.
+  Tendo em vista que a aplicação foi desenvolvida utilizando a arquitetura MSC, os testes foram desenvolvidos para cada camada da aplicação.
 </details>
 
 <details>
